@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default } from './products';","map":{"version":3,"sources":["/home/bytes-kishan/Desktop/Kishan/strapi/frontend/pages/index.js"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,YAAxB","sourcesContent":["export { default } from './products'"]},"metadata":{},"sourceType":"module"}
