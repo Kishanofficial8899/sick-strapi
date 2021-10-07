@@ -2,7 +2,6 @@ import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import Form from './styles/Form';
 import useForm from '../lib/useForm';
-import Cookie from "js-cookie";
 import Error from './ErrorMessage';
 
 const SIGNUP_MUTATION = gql`

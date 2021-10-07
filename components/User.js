@@ -19,6 +19,6 @@ export function useUser() {
             }
         }
     })
-   
+    console.log(">>>check",data)
     return data;
 }

@@ -21,7 +21,7 @@ export default function SignIn() {
         password: '',
     });
     
-    const [login, { data, loading,error}] = useMutation(SIGNIN_MUTATION, {
+    const [login, { data,loading,error}] = useMutation(SIGNIN_MUTATION, {
         variables: {
             identifier: inputs.identifier,
             password: inputs.password
@@ -31,8 +31,8 @@ export default function SignIn() {
         e.preventDefault(); // stop the form from submitting
         try {
             const res = await login()
+            console.log(res)
             if (res) {
-                console.log(res)
                 Cookie.set("token", res.data.login.jwt);
                 Router.push("/");
             }
@@ -41,11 +41,12 @@ export default function SignIn() {
         }
         resetForm();
     }
+    console.log(">>>",data)
     return (
         <Form method="POST" onSubmit={handleSubmit}>
             <h2>Sign Into Your Account</h2>
             <Error error={error} />
-            <fieldset>
+            <fieldset disabled={loading} aria-busy={loading}>
                 <label htmlFor="email">
                     Email
                     <input
@@ -55,6 +56,7 @@ export default function SignIn() {
                         autoComplete="identifier"
                         value={inputs.identifier}
                         onChange={handleChange}
+                        required
                     />
                 </label>
                 <label htmlFor="password">

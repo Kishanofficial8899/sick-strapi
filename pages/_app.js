@@ -9,13 +9,10 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-const client = new ApolloClient({
-  uri: process.env.ENVIROMENT === 'development' ? process.env.PRODUCTION_URL : process.env.PRODUCTION_URL,
-  cache: new InMemoryCache()
-});
+
 function MyApp({ Component, pageProps, apollo }) {
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={apollo}>
       <Page>
         <Component {...pageProps} />
       </Page>
@@ -32,4 +29,4 @@ MyApp.getInitialProps = async function ({ Component, ctx }) {
   return { pageProps };
 };
 
-export default MyApp;
+export default withData(MyApp);
